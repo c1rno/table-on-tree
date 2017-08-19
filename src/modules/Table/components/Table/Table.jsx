@@ -3,10 +3,12 @@ import { Component } from 'react'
 
 // Importing the local component
 import TableArea from 'components/TableArea'
+import TreeProvider from 'data/providers/Tree'
 
 class Table extends Component {
 	constructor(props) {
 		super(props)
+		this.handleClick.bind(this)
 	}
 
 	componentDidMount() {
@@ -19,6 +21,12 @@ class Table extends Component {
 
 	componentWillUnmount() {
 
+	}
+
+	handleClick(type, index){
+		return (event) => {
+			console.log('Click on', type, index, 'handled', event)
+		}
 	}
 
 	render() {
@@ -67,11 +75,11 @@ class Table extends Component {
 		return (
 				<div className="table">
 					<h2 className="table__header">Simple example</h2>
-					<TableArea rows={ rows } />
+					<TableArea rows={ rows } callback={ this.handleClick } />
 					{ this.props.children }
 				</div>
 			)
 	}
 }
 
-export default Table
+export default TreeProvider(Table)

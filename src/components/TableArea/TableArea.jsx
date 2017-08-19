@@ -6,14 +6,14 @@ const TableArea = (props) => {
 	const rows = props.rows.map(
 		(row, row_index, rows) => { return (
 			<div key={ row_index } className="table-area__row">
-				<TableAddRow index={ row_index } />
-				<TableRow cols={ row.cols } />
+				<TableAddRow index={ row_index } callback={props.callback} />
+				<TableRow cols={ row.cols } callback={props.callback} />
 			</div>
 		)}
 	)
 	rows.push(
 		<div key={ props.rows.length } className="table-area__row">
-			<TableAddRow key={ props.rows.length } />
+			<TableAddRow index={ props.rows.length } callback={props.callback} />
 		</div>
 	)
 
