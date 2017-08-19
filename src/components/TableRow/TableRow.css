@@ -1,0 +1,17 @@
+.table-row {
+	display: flex;
+	flex-flow: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+}
+.table-row .table-row__cell {
+	width: 50px;
+	height: 50px;
+	position: relative;
+	display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.table-row .table-row__cell:last-child {
+	padding: initial;
+}

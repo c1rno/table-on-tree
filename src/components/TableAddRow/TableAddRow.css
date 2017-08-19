@@ -1,0 +1,24 @@
+.table-add-row {
+	width: 100%;
+	height: 3px;
+	background-color: #333;
+	transform: translate(-25px, 0);
+}
+
+.table-add-row:hover::after {
+/* .table-add-row::after { */
+	content: "→";
+	font-size: 20px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.table-add-row:hover::before {
+/* .table-add-row::before { */
+	content: "←";
+	font-size: 20px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}

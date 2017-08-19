@@ -2,3 +2,6 @@ node_modules/
 npm-debug.log
 yarn-error.log
 .DS_Store
+dist/*
+
+src/bootstrap/startup_original.js

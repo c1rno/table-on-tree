@@ -99,7 +99,7 @@ class Application extends EventEmitter {
 			await this._init()
 		}
 
-        // Create the store, see bootstrap/createStore.js
+    // Create the store, see bootstrap/createStore.js
 		const _store = createStore(combineReducers(this.reducers))
 		Object.defineProperty(this, 'store', {
 			enumerable: true,

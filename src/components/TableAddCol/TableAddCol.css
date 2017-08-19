@@ -1,0 +1,28 @@
+.table-add-col {
+	height: 100%;
+	width: 3px;
+	background-color: #333;
+	position: absolute;
+	left: -1px;
+	top: -50%;
+	height: 200%;
+}
+
+.table-add-col:hover::after {
+/* .table-add-col::after { */
+	content: "↓";
+	font-size: 20px;
+	position: absolute;
+	top: -4px;
+	left: 2px;
+}
+
+.table-add-col:hover::before {
+/* .table-add-col::before { */
+	content: "↑";
+	font-size: 20px;
+	position: absolute;
+	bottom: 0;
+	left: 2px;
+}
+

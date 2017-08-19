@@ -43,10 +43,7 @@ module.exports = {
 			config: config
 		}),
 		new webpack.ProvidePlugin({
-			jQuery: 'jquery',
 			config: 'config',
-			_: 'lodash',
-			Immutable: 'immutable',
 			http: 'axios',
 			Promise: 'bluebird',
 			moment: 'moment'

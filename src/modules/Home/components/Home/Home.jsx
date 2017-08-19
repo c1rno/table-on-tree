@@ -52,27 +52,27 @@ class Home extends Component {
 
 	render() {
 		return (
-            <div>
-                <h1>I am your homepage!</h1>
-				<Hello name="Someone" />
-                <p>Counting... {this.props.count}</p>
+				<div>
+					<h1>I am your homepage!</h1>
+					<Hello name="Someone" />
+					<p>Counting... {this.props.count}</p>
 
-				<div className="btn-group">
-					<button className="btn btn-warning" onClick={this.resetCounter}>Reset!</button>
-					<button className="btn btn-danger" onClick={this.stopCounting}>Stop</button>
-					<button className="btn btn-success" onClick={this.startCounting}>Start</button>
+					<div className="btn-group">
+						<button className="btn btn-warning" onClick={this.resetCounter}>Reset!</button>
+						<button className="btn btn-danger" onClick={this.stopCounting}>Stop</button>
+						<button className="btn btn-success" onClick={this.startCounting}>Start</button>
+					</div>
+
+					<h4>These are your posts</h4>
+					<ul>
+						{this.props.posts.map( (p, i) => (
+							<li key={i}>{p.title} <small className="text-muted">{p.content}</small></li>
+						))}
+					</ul>
+
+					{this.props.children}
 				</div>
-
-				<h4>These are your posts</h4>
-				<ul>
-					{this.props.posts.map( (p, i) => (
-						<li key={i}>{p.title} <small className="text-muted">{p.content}</small></li>
-					))}
-				</ul>
-
-				{this.props.children}
-            </div>
-        )
+			)
 	}
 }
 

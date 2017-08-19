@@ -2,8 +2,8 @@ import Module from 'core/Module'
 
 import Routes from './Routes'
 
-const module = new Module('submodule', null, Routes)
+const module = new Module('table', null, Routes)
 
-module.submoduleOf('home')
+module.submoduleOf('layout')
 
 export default module

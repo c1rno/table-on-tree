@@ -1,0 +1,11 @@
+.table-area {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.table-area table-area__content {
+	margin: 50px;
+}
+.table-area .table-area__row {
+	position: relative;
+}
