@@ -1,4 +1,5 @@
 import update from 'immutability-helper'
+import makeTree from './TreeInterface'
 
 class TreeProxy {
 	constructor() {
@@ -49,16 +50,19 @@ class TreeProxy {
 
 	getTable(table) {
 		let currentTree = this.getTree()
+		return currentTree.children
 	}
 
 	addRow(index) {
-
+		console.log(`addRow(${index})`)
 	}
 
 	addCol(index) {
-
+		console.log(`addCol(${index})`)
 	}
 
 }
 
-export default new TreeProxy()
+const tree = new TreeProxy()
+tree.setTree(makeTree())
+export default tree

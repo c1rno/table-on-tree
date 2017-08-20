@@ -7,7 +7,7 @@ const TableArea = (props) => {
 		(row, row_index, rows) => { return (
 			<div key={ row_index } className="table-area__row">
 				<TableAddRow index={ row_index } callback={props.callback} />
-				<TableRow cols={ row.cols } callback={props.callback} />
+				<TableRow cols={ row.children } callback={props.callback} />
 			</div>
 		)}
 	)
