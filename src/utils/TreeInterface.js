@@ -19,16 +19,54 @@ class TreeNode {
 }
 
 export default () => {
-	const initialData = [
-		{ id: 1, children: [ {id: 11}, {id: 12}, {id: 13}, {id: 14}, {id: 15} ] },
-		{ id: 2, children: [ {id: 21}, {id: 22}, {id: 23}, {id: 24}, {id: 25} ] },
-		{ id: 3, children: [ {id: 31}, {id: 32}, {id: 33}, {id: 34}, {id: 35} ] },
-		{ id: 4, children: [ {id: 41}, {id: 42}, {id: 43}, {id: 44}, {id: 45} ] },
-		{ id: 5, children: [ {id: 51}, {id: 52}, {id: 53}, {id: 54}, {id: 55} ] }
-	]
-	const root = new TreeNode(null)
-	for (let node of initialData) {
-		root.addChild(node)
-	}
-	return root
+	const initialData = {id: -1, children: [
+		{id: 1, children: [
+			{id: 11, children: [
+				{id: 111, children: [
+					{id: 1111, children: [
+						{id: 11111}
+					]}
+				]}
+			]}
+		]},
+		{id: 2, children: [
+			{id: 22, children: [
+				{id: 222, children: [
+					{id: 2222, children: [
+						{id: 22222}
+					]}
+				]}
+			]}
+		]},
+		{id: 3, children: [
+			{id: 33, children: [
+				{id: 333, children: [
+					{id: 3333, children: [
+						{id: 33333}
+					]}
+				]}
+			]}
+		]},
+		{id: 4, children: [
+			{id: 44, children: [
+				{id: 444, children: [
+					{id: 4444, children: [
+						{id: 44444}
+					]}
+				]}
+			]}
+		]},
+		{id: 5, children: [
+			{id: 55, children: [
+				{id: 555, children: [
+					{id: 5555, children: [
+						{id: 55555}
+					]}
+				]}
+			]}
+		]}
+	]}
+	const currentTree = new TreeNode(null)
+	currentTree.addChild(initialData)
+	return currentTree
 }

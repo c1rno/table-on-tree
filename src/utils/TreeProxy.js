@@ -43,14 +43,52 @@ class TreeProxy {
 		return this.versions[this.currentVersion]
 	}
 
-	setTree(tree) {
-		this.versions.push(tree)
-		this.inscreaseVersion()
+	setTree(tree, dropHistory = false) {
+		if (!dropHistory) {
+			this.versions.push(tree)
+			this.inscreaseVersion()
+		} else {
+			this.versions = [tree]
+			this.currentVersion = 0
+		}
+
 	}
 
 	getTable(table) {
-		let currentTree = this.getTree()
-		return currentTree.children
+		const currentTree = this.getTree()
+		const treeParser = (tree) => {
+			const cols = []
+			let subTree = tree
+			while (subTree) {
+				cols.push(subTree)
+				subTree = subTree.children[0]
+			}
+			return cols
+		}
+		const matrix = []
+		for (let col of currentTree.children) {
+			matrix.push(treeParser(col))
+		}
+		const transpose = (_matrix) => {
+			const m = _matrix.length
+			const n = _matrix[0].length
+			const _matrix_trans = []
+			for (let i = 0; i < n; i++) {
+				_matrix_trans[i] = []
+				for (let j = 0; j < m; j++) {
+					_matrix_trans[i][j] = _matrix[j][i]
+				}
+			}
+			return _matrix_trans
+		}
+		const makeTable = (_matrix) => {
+			const table = []
+			for (let row of _matrix) {
+				table.push({children: row})
+			}
+			return table
+		}
+		return makeTable(transpose(matrix))
 	}
 
 	addRow(index) {
@@ -64,5 +102,5 @@ class TreeProxy {
 }
 
 const tree = new TreeProxy()
-tree.setTree(makeTree())
+tree.setTree(makeTree().children[0])
 export default tree
