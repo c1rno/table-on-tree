@@ -2,5 +2,10 @@
 
 }
 .table .table__header {
+
+}
+.table .table__controls {
+	display: flex;
+	justify-content: space-evenly;
 	margin: 0 0 50px 0;
 }

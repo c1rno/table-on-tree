@@ -32,11 +32,15 @@ class TreeProxy {
 
 	/** Call it after adding smth to versions */
 	inscreaseVersion() {
-		return this._changeVersion(true)
+		const ret = this._changeVersion(true)
+		console.log(`inscreaseVersion ${ret}, current ${this.currentVersion}`)
+		return ret
 	}
 
 	decreaseVersion() {
-		return this._changeVersion(false)
+		const ret = this._changeVersion(false)
+		console.log(`decreaseVersion ${ret}, current ${this.currentVersion}`)
+		return ret
 	}
 
 	getTree() {
@@ -97,6 +101,11 @@ class TreeProxy {
 
 	addCol(index) {
 		console.log(`addCol(${index})`)
+		const currentTree = this.getTree()
+		const newTree = update(currentTree, {children: {$splice: [
+			[index, 0, currentTree.children[index] ? currentTree.children[index]: currentTree.children[0]]
+		]}})
+		this.setTree(newTree)
 	}
 
 }
