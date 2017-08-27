@@ -10,12 +10,13 @@ import makeTree from 'utils/TreeInterface'
 class Table extends Component {
 	constructor(props) {
 		super(props)
+		this.tree = TreeProxy
 	}
 
 	componentWillMount() {
-		TreeProxy.setTree(makeTree().children[0], true)
+		this.tree.setTree(makeTree().children[0], true)
 		this.state = {
-			rows: TreeProxy.getTable(),
+			rows: this.tree.getTable(),
 			header: 'Simple example'
 		}
 	}
@@ -24,24 +25,24 @@ class Table extends Component {
 		return (event) => {
 			console.log('Click on', type, index, 'handled', event)
 			switch (type) {
-				case 'ROW': TreeProxy.addRow(index); break
-				case 'COL': TreeProxy.addCol(index); break
+				case 'ROW': this.tree.addRow(index); break
+				case 'COL': this.tree.addCol(index); break
 				default: console.log('ERROR: <Unknown type>')
 			}
 			this.setState({
-				rows: TreeProxy.getTable()
+				rows: this.tree.getTable()
 			})
 		}
 	}
 
 	inscreaseVersion(forward) {
-		let versionChanger = forward ? TreeProxy.inscreaseVersion : TreeProxy.decreaseVersion
-		versionChanger = versionChanger.bind(TreeProxy)
+		let versionChanger = forward ? this.tree.inscreaseVersion : this.tree.decreaseVersion
+		versionChanger = versionChanger.bind(this.tree)
 		return () => {
 			const isChanged = versionChanger()
 			if (isChanged) {
 				this.setState({
-					rows: TreeProxy.getTable()
+					rows: this.tree.getTable()
 				})
 			}
 		}

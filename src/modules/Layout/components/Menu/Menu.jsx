@@ -9,10 +9,13 @@ const Menu = (props) => { return (
 				<Link to='/'>Home</Link>
 			</li>
 			<li className="main-menu__list_item">
-				<Link to='/example1'>Simple example</Link>
+				<Link to='/example'>Simple example</Link>
 			</li>
 			<li className="main-menu__list_item">
-				<Link to='/example2'>A bit more complicated example</Link>
+				<Link to='/example1'>A bit more complicated example</Link>
+			</li>
+			<li className="main-menu__list_item">
+				<Link to='/example2'>Harder example</Link>
 			</li>
 		</ul>
 	</aside>

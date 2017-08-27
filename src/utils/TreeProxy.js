@@ -1,5 +1,4 @@
 import update from 'immutability-helper'
-import makeTree from './TreeInterface'
 
 class TreeProxy {
 	constructor() {

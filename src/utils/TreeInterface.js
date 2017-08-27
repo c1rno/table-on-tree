@@ -123,6 +123,62 @@ export default (dataset = 0) => {
 				{id: 60, children: []}
 			]}
 			break
+
+		case 2:
+			initialData = {id: -1, children: [
+				{id: 10, children: [
+					{id: 11, children: [
+						{id: 110, children: [
+							{id: 1110, children: [
+								{id: 11110}
+							]}
+						]},
+						{id: 1111, children: [
+							{id: 11111}
+						]}
+					]}
+				]},
+				{id: 20, children: [
+					{id: 21, children: [
+						{id: 22, children: [
+							{id: 23, children: [
+								{id: 24}
+							]}
+						]}
+					]}
+				]},
+				{id: 30, children: [
+					{id: 31, children: [
+						{id: 32, children: [
+							{id: 33, children: [
+								{id: 34}
+							]}
+						]}
+					]}
+				]},
+				{id: 40, children: [
+					{id: 41, children: [
+						{id: 42, children: [
+							{id: 43, children: [
+								{id: 44, children: [
+									{id: 45}
+								]}
+							]}
+						]}
+					]}
+				]},
+				{id: 50, children: [
+					{id: 51, children: [
+						{id: 52, children: [
+							{id: 53, children: [
+								{id: 54}
+							]}
+						]}
+					]}
+				]},
+				{id: 60, children: []}
+			]}
+			break
 	}
 
 	const currentTree = new TreeNode(null)
