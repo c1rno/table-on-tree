@@ -11,6 +11,9 @@ const Menu = (props) => { return (
 			<li className="main-menu__list_item">
 				<Link to='/example1'>Simple example</Link>
 			</li>
+			<li className="main-menu__list_item">
+				<Link to='/example2'>A bit more complicated example</Link>
+			</li>
 		</ul>
 	</aside>
 )}

@@ -4,8 +4,8 @@ import { Component } from 'react'
 // Importing the local component
 import TableArea from 'components/TableArea'
 import Button from 'components/Button'
-import TreeProvider from 'data/providers/Tree'
 import TreeProxy from 'utils/TreeProxy'
+import makeTree from 'utils/TreeInterface'
 
 class Table extends Component {
 	constructor(props) {
@@ -13,8 +13,10 @@ class Table extends Component {
 	}
 
 	componentWillMount() {
+		TreeProxy.setTree(makeTree().children[0], true)
 		this.state = {
-			rows: TreeProxy.getTable()
+			rows: TreeProxy.getTable(),
+			header: 'Simple example'
 		}
 	}
 
@@ -48,7 +50,7 @@ class Table extends Component {
 	render() {
 		return (
 				<div className="table">
-					<h2 className="table__header">Simple example</h2>
+					<h2 className="table__header">{this.state.header}</h2>
 					<div className="table__controls">
 						<Button name="Turn back changes" callback={this.inscreaseVersion(false).bind(this)} />
 						<Button name="Forward changes" callback={this.inscreaseVersion(true).bind(this)} />

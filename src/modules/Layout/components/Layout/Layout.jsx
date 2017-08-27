@@ -5,6 +5,7 @@ import { Component } from 'react'
 import Header from '../Header'
 import Footer from '../Footer'
 import Menu from '../Menu'
+import Info from '../Info'
 
 // Importing some CSS
 import 'bootstrap/dist/css/bootstrap.css'
@@ -14,19 +15,8 @@ class Layout extends Component {
 		super(props)
 	}
 
-	componentDidMount() {
-
-	}
-
-	componentDidUpdate(prevProps) {
-
-	}
-
-	componentWillUnmount() {
-
-	}
-
 	render() {
+		const body = this.props.children || <Info />
 		return (
 				<div>
 					<Header/>
@@ -34,7 +24,7 @@ class Layout extends Component {
 						<div className='row'>
 							<Menu className='col-md-2 col-sm-12' />
 							<main className='col-md-10 col-sm-12'>
-								{ this.props.children }
+								{ body }
 							</main>
 						</div>
 					</div>

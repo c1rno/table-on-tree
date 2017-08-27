@@ -75,7 +75,7 @@ class TreeProxy {
 		}
 		const transpose = (_matrix) => {
 			const m = _matrix.length
-			const n = _matrix[0].length
+			const n = _matrix.map((elem) => elem.length).reduce((first, second) => Math.max(first, second))
 			const _matrix_trans = []
 			for (let i = 0; i < n; i++) {
 				_matrix_trans[i] = []
@@ -97,13 +97,56 @@ class TreeProxy {
 
 	addRow(index) {
 		console.log(`addRow(${index})`)
+		const currentTree = this.getTree()
+		let partiallyUpdatedTree = currentTree
+		const childFinder = (index_) => {
+			let childIndex = 0
+			const _childFinder = (child) => {
+				if (index_ === 0 || childIndex === index_ - 1) {
+					return updateLastChild(child)
+				}
+
+				if (!child || !child.children) { return }
+
+				childIndex += 1
+				return update(child, {
+					children: {
+						[0]: {$apply: _childFinder}
+					}
+				})
+			}
+			return _childFinder
+		}
+		const updateLastChild = (child) => {
+			if (!child) { return }
+
+			let updatedChild = update(child, {})
+			let updatedSubChild = update(child, {
+				parent: {$set: updatedChild}
+			})
+			updatedChild = update(updatedChild, {
+				children: {
+					[0]: {$set: updatedSubChild}
+				}
+			})
+			return updatedChild
+		}
+		for (let i = 0; i < currentTree.children.length; i++) {
+			const updater = childFinder(index)
+			partiallyUpdatedTree = update(partiallyUpdatedTree, {
+				children: {
+					[i]: {$apply: updater}
+				}
+			})
+		}
+		this.setTree(partiallyUpdatedTree)
 	}
 
 	addCol(index) {
 		console.log(`addCol(${index})`)
 		const currentTree = this.getTree()
 		const newTree = update(currentTree, {children: {$splice: [
-			[index, 0, currentTree.children[index] ? currentTree.children[index]: currentTree.children[0]]
+			[index, 0, currentTree.children[index] ? currentTree.children[index]: currentTree.children[currentTree.children.length - 1]]
 		]}})
 		this.setTree(newTree)
 	}
@@ -111,5 +154,4 @@ class TreeProxy {
 }
 
 const tree = new TreeProxy()
-tree.setTree(makeTree().children[0])
 export default tree

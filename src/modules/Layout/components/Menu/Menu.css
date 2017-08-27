@@ -8,7 +8,8 @@
 	padding: 0;
 }
 .main-menu .main-menu__list .main-menu__list_item {
-	display: block
+	display: block;
+	margin: 10px 0;
 }
 .main-menu .main-menu__list .main-menu__list_item a {
 	color: #333;
